@@ -1,0 +1,51 @@
+════════════════════════════════════════════════════════════
+          RESUME PARSER & ANALYZER — REPORT
+          Generated: 08 May 2026, 09:43 AM
+════════════════════════════════════════════════════════════
+
+👤  CANDIDATE
+   Name     : Chennaboina Janit Pradyun
+   Email    : pradyun2611@gmail.com
+   Phone    : +91-9347238037
+   LinkedIn : Not found
+   GitHub   : Not found
+
+📊  EXPERIENCE LEVEL
+   [ Fresher / Intern ]   —   0 year(s) estimated
+
+🛠   TECHNICAL SKILLS
+   Programming Languages:
+     Python, Java, JavaScript, C, Rust, Shell, Bash, SQL, HTML, CSS
+   Frameworks & Libraries:
+     React, PyTorch, Pandas, NumPy, Matplotlib
+   Databases:
+     MongoDB
+   Cloud & DevOps:
+     Git, GitHub
+   Tools & Platforms:
+     Postman, Jupyter
+   Concepts:
+     Machine Learning, Deep Learning, NLP
+
+💼  EXPERIENCE ENTRIES
+   1. Aug 2024 – Current  (0 yrs)
+   2. June 2024 – Current  (0 yrs)
+   3. Aug 2025 – Dec 2025  (0 yrs)
+
+🎓  EDUCATION
+   • Chennaboina Janit Pradyun
++91-9347238037| pradyun2611@gmail.com| se24uari103@mah  [2024]
+
+🎯  JOB DESCRIPTION MATCH
+   Overall Score  : ███████████████░░░░░░░░░░░░░░░  51/100
+   Skill Match    : ████████████████████████░░░░░░  80/100
+   Keyword Match  : █████████░░░░░░░░░░░░░░░░░░░░░  30/100
+   Experience Fit : ███░░░░░░░░░░░░░░░░░░░░░░░░░░░  10/100
+
+   ✅ Matched Skills:
+      Python, React, MongoDB, Git, GitHub, Machine Learning, Deep Learning, NLP
+
+   ❌ Missing Skills:
+      Communication, Teamwork
+
+════════════════════════════════════════════════════════════

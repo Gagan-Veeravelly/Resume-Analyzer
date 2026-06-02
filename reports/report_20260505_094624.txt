@@ -1,0 +1,54 @@
+════════════════════════════════════════════════════════════
+          RESUME PARSER & ANALYZER — REPORT
+          Generated: 05 May 2026, 09:46 AM
+════════════════════════════════════════════════════════════
+
+👤  CANDIDATE
+   Name     : John Doe
+   Email    : john.doe@email.com
+   Phone    : +91-9876543210
+   LinkedIn : linkedin.com/in/johndoe
+   GitHub   : github.com/johndoe
+
+📊  EXPERIENCE LEVEL
+   [ Mid-Level ]   —   4 year(s) estimated
+
+🛠   TECHNICAL SKILLS
+   Programming Languages:
+     Python, JavaScript, SQL, HTML, CSS
+   Frameworks & Libraries:
+     Django, Flask, React, Node.js
+   Databases:
+     MySQL, PostgreSQL, MongoDB
+   Cloud & DevOps:
+     AWS, Docker, Git, GitHub
+   Tools & Platforms:
+     VS Code, Jupyter
+   Concepts:
+     Machine Learning, NLP, REST, Microservices, OOP, Agile
+
+🤝  SOFT SKILLS
+   Communication, Problem-solving
+
+💼  EXPERIENCE ENTRIES
+   1. Jan 2021 – Present  (3 yrs)
+   2. Jun 2019 – Dec 2020  (1 yr)
+
+🎓  EDUCATION
+   • SKILLS
+Programming: Python, JavaScript, SQL, HTML, CSS
+Frameworks: Django, Flask  [2021]
+
+🎯  JOB DESCRIPTION MATCH
+   Overall Score  : █████████████████████░░░░░░░░░  70/100
+   Skill Match    : ████████████████████████░░░░░░  82/100
+   Keyword Match  : █████████░░░░░░░░░░░░░░░░░░░░░  31/100
+   Experience Fit : ██████████████████████████████  100/100
+
+   ✅ Matched Skills:
+      Python, Django, React, AWS, Docker, Machine Learning, REST, Microservices, Communication
+
+   ❌ Missing Skills:
+      Kubernetes, Teamwork
+
+════════════════════════════════════════════════════════════

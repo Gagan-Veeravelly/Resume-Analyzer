@@ -1,0 +1,51 @@
+════════════════════════════════════════════════════════════
+          RESUME PARSER & ANALYZER — REPORT
+          Generated: 07 May 2026, 11:18 PM
+════════════════════════════════════════════════════════════
+
+👤  CANDIDATE
+   Name     : Chennaboina Janit Pradyun
+   Email    : pradyun2611@gmail.com
+   Phone    : +91-9347238037
+   LinkedIn : Not found
+   GitHub   : Not found
+
+📊  EXPERIENCE LEVEL
+   [ Fresher / Intern ]   —   0 year(s) estimated
+
+🛠   TECHNICAL SKILLS
+   Programming Languages:
+     Python, Java, JavaScript, C, Rust, Shell, Bash, SQL, HTML, CSS
+   Frameworks & Libraries:
+     React, PyTorch, Pandas, NumPy, Matplotlib
+   Databases:
+     MongoDB
+   Cloud & DevOps:
+     Git, GitHub
+   Tools & Platforms:
+     Postman, Jupyter
+   Concepts:
+     Machine Learning, Deep Learning, NLP
+
+💼  EXPERIENCE ENTRIES
+   1. Aug 2024 – Current  (0 yrs)
+   2. June 2024 – Current  (0 yrs)
+   3. Aug 2025 – Dec 2025  (0 yrs)
+
+🎓  EDUCATION
+   • Chennaboina Janit Pradyun
++91-9347238037| pradyun2611@gmail.com| se24uari103@mah  [2024]
+
+🎯  JOB DESCRIPTION MATCH
+   Overall Score  : █████░░░░░░░░░░░░░░░░░░░░░░░░░  18/100
+   Skill Match    : ████████░░░░░░░░░░░░░░░░░░░░░░  27/100
+   Keyword Match  : ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░  8/100
+   Experience Fit : ███░░░░░░░░░░░░░░░░░░░░░░░░░░░  10/100
+
+   ✅ Matched Skills:
+      Python, React, Machine Learning
+
+   ❌ Missing Skills:
+      Django, AWS, Docker, Kubernetes, REST, Microservices, Communication, Teamwork
+
+════════════════════════════════════════════════════════════

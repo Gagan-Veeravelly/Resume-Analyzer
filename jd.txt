@@ -1,0 +1,7 @@
+We are looking for a Python Developer with:
+- 1+ years of experience in Python
+- Knowledge of Machine Learning and Deep Learning
+- Experience with React and MongoDB
+- Familiarity with Git and GitHub
+- Strong communication and teamwork skills
+- NLP experience is a plus

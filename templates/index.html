@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Parser & Analyzer</title>
+    <style>
+        :root {
+            --bg: #0f172a; --card: #1e293b; --text: #e2e8f0;
+            --text-muted: #94a3b8; --accent: #3b82f6; --accent-hover: #2563eb;
+            --success: #22c55e; --error: #ef4444; --border: #334155;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; }
+        .container { max-width: 850px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 2.5rem; }
+        h1 { font-size: 2.2rem; margin-bottom: 0.5rem; background: linear-gradient(90deg, var(--accent), #8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        p { color: var(--text-muted); }
+        .upload-area { border: 2px dashed var(--border); border-radius: 12px; padding: 2rem; text-align: center; background: var(--card); cursor: pointer; transition: all 0.2s; margin-bottom: 1.5rem; }
+        .upload-area:hover, .upload-area.dragover { border-color: var(--accent); background: #1e293b88; }
+        .upload-area input { display: none; }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+        textarea { width: 100%; padding: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); resize: vertical; min-height: 120px; font-family: inherit; }
+        button { background: var(--accent); color: white; border: none; padding: 0.85rem 1.5rem; border-radius: 8px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: background 0.2s; width: 100%; }
+        button:hover:not(:disabled) { background: var(--accent-hover); }
+        button:disabled { opacity: 0.6; cursor: not-allowed; }
+        #results { margin-top: 2rem; display: none; }
+        .result-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; white-space: pre-wrap; font-family: 'SF Mono', 'Consolas', monospace; font-size: 0.95rem; line-height: 1.7; max-height: 650px; overflow-y: auto; }
+        .loader { display: none; text-align: center; margin: 2rem 0; }
+        .spinner { width: 40px; height: 40px; border: 4px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .alert { padding: 1rem; border-radius: 8px; margin-top: 1rem; display: none; }
+        .alert.error { background: #2a1215; color: var(--error); border: 1px solid #7f1d1d; }
+        .alert.success { background: #052e16; color: var(--success); border: 1px solid #14532d; }
+        .file-name { font-weight: 500; color: var(--accent); margin-top: 0.5rem; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 Resume Parser & Analyzer</h1>
+            <p>Upload a PDF/DOCX resume and optionally paste a Job Description for match scoring.</p>
+        </header>
+
+        <form id="analyzeForm">
+            <div class="upload-area" id="dropZone">
+                <input type="file" id="fileInput" accept=".pdf,.docx" required>
+                <div>📎 Drag & drop your resume here or <strong>click to upload</strong></div>
+                <div class="file-name" id="fileName"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="jd">Job Description (Optional)</label>
+                <textarea id="jd" placeholder="Paste the job description here to get an automated match score..."></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn">🔍 Analyze Resume</button>
+            <div class="alert success" id="successMsg">✅ Analysis complete! Check results below.</div>
+            <div class="alert error" id="errorMsg"></div>
+        </form>
+
+        <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <p>Extracting & analyzing data...</p>
+        </div>
+
+        <div id="results">
+            <div class="result-card" id="reportOutput"></div>
+        </div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileName = document.getElementById('fileName');
+        const form = document.getElementById('analyzeForm');
+        const loader = document.getElementById('loader');
+        const results = document.getElementById('results');
+        const reportOutput = document.getElementById('reportOutput');
+        const submitBtn = document.getElementById('submitBtn');
+        const errorMsg = document.getElementById('errorMsg');
+        const successMsg = document.getElementById('successMsg');
+
+        // Drag & drop handlers
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(e => dropZone.addEventListener(e, ev => { ev.preventDefault(); ev.stopPropagation(); }));
+        ['dragenter', 'dragover'].forEach(e => dropZone.addEventListener(e, () => dropZone.classList.add('dragover')));
+        ['dragleave', 'drop'].forEach(e => dropZone.addEventListener(e, () => dropZone.classList.remove('dragover')));
+        dropZone.addEventListener('drop', e => { if(e.dataTransfer.files.length) { fileInput.files = e.dataTransfer.files; updateFileName(e.dataTransfer.files[0].name); }});
+        fileInput.addEventListener('change', () => { if(fileInput.files.length) updateFileName(fileInput.files[0].name); });
+
+        function updateFileName(name) { fileName.textContent = `Selected: ${name}`; fileName.style.display = 'block'; }
+        function stripAnsi(str) { return str.replace(/\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])/g, ''); }
+
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+            errorMsg.style.display = 'none'; successMsg.style.display = 'none'; results.style.display = 'none';
+            loader.style.display = 'block'; submitBtn.disabled = true;
+
+            const formData = new FormData();
+            formData.append('resume', fileInput.files[0]);
+            formData.append('jd', document.getElementById('jd').value);
+
+            try {
+                const res = await fetch('/analyze', { method: 'POST', body: formData });
+                const data = await res.json();
+                if (!res.ok || !data.success) throw new Error(data.error || 'Analysis failed');
+
+                reportOutput.textContent = stripAnsi(data.report);
+                results.style.display = 'block'; successMsg.style.display = 'block';
+            } catch (err) {
+                errorMsg.textContent = `❌ ${err.message}`; errorMsg.style.display = 'block';
+            } finally {
+                loader.style.display = 'none'; submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
